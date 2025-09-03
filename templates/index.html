@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hotel Booking Chatbot</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main class="chat-container">
+    <header class="chat-header">
+      <h1>NY-1 Booking Assistant</h1>
+      <p>Quick bookings.</p>
+    </header>
+
+    <section id="chat" class="chat-window" aria-live="polite"></section>
+
+    <form id="inputForm" class="chat-input" autocomplete="off">
+      <input id="messageInput" type="text" placeholder="Say something like 'Book a room for 2 from May 2 to May 5'..." />
+      <button type="submit">Send</button>
+    </form>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

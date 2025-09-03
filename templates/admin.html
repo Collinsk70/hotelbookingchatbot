@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hotel Booking Admin</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1 { margin-bottom: 20px; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 10px; border: 1px solid #ccc; text-align: center; }
+    th { background-color: #f5f5f5; }
+    tr:nth-child(even) { background-color: #fafafa; }
+    .confirmed { color: green; font-weight: bold; }
+    .cancelled { color: red; font-weight: bold; }
+    .pending { color: orange; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Hotel Booking Admin</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Guest</th>
+        <th>Check-in</th>
+        <th>Check-out</th>
+        <th>Nights</th>
+        <th>Guests</th>
+        <th>Breakfast</th>
+        <th>Payment</th>
+        <th>Status</th>
+        <th>Created</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for b in bookings %}
+      <tr>
+        <td>{{ b.id }}</td>
+        <td>{{ b.guest_name or '-' }}</td>
+        <td>{{ b.checkin.strftime("%Y-%m-%d") if b.checkin else '-' }}</td>
+        <td>{{ b.checkout.strftime("%Y-%m-%d") if b.checkout else '-' }}</td>
+        <td>{{ b.nights or '-' }}</td>
+        <td>{{ b.guests or '-' }}</td>
+        <td>{{ b.breakfast or '-' }}</td>
+        <td>{{ b.payment_method or '-' }}</td>
+        <td class="{% if b.confirmed %}confirmed{% elif 'Cancelled' in (b.notes or '') %}cancelled{% else %}pending{% endif %}">
+          {% if b.confirmed %}Confirmed{% elif 'Cancelled' in (b.notes or '') %}Cancelled{% else %}Pending{% endif %}
+        </td>
+        <td>{{ b.created_at.strftime("%Y-%m-%d %H:%M") }}</td>
+        <td>{{ b.notes or '' }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>

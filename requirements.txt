@@ -1,0 +1,7 @@
+flask>=2.2
+flask-cors>=4.0
+sqlalchemy>=1.4
+python-dateutil>=2.9
+dateparser>=1.1.1
+spacy>=3.0
+# after installing run: python -m spacy download en_core_web_sm
